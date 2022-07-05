@@ -1,0 +1,160 @@
+#Strategic Resource Extraction and Refining 1
+tech_extract_and_refine_1 = {
+	cost = @tier2cost1
+	area = engineering
+	tier = 2
+	category = { materials }	
+	prerequisites = { "tech_volatile_motes" "tech_exotic_gases" "tech_rare_crystals" }
+	weight = @tier2weight1
+	
+	modifier = {
+		planet_chemists_produces_mult = 0.25
+		planet_translucers_produces_mult = 0.25
+		planet_refiners_produces_mult = 0.25
+		planet_miners_volatile_motes_produces_mult = 1.0
+		planet_miners_exotic_gases_produces_mult = 1.0
+		planet_miners_rare_crystals_produces_mult = 1.0
+	}	
+	
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}			
+		}
+	}
+	
+	ai_weight = {
+		factor = 5 #important resource
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}
+		}
+	}
+}
+
+tech_extract_and_refine_2 = {
+	cost = @tier2cost1
+	area = engineering
+	tier = 2
+	category = { materials }	
+	prerequisites = { "tech_extract_and_refine_1" }
+	weight = @tier2weight1
+	
+	modifier = {
+		planet_chemists_produces_mult = 0.25
+		planet_translucers_produces_mult = 0.25
+		planet_refiners_produces_mult = 0.25
+		planet_miners_volatile_motes_produces_mult = 1.0
+		planet_miners_exotic_gases_produces_mult = 1.0
+		planet_miners_rare_crystals_produces_mult = 1.0
+	}	
+	
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}			
+		}
+	}
+	
+	ai_weight = {
+		factor = 5 #important resource
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}
+		}
+	}
+}
+
+tech_extract_and_refine_3 = {
+	cost = @tier2cost1
+	area = engineering
+	tier = 2
+	category = { materials }	
+	prerequisites = { "tech_extract_and_refine_2" }
+	weight = @tier2weight1
+	
+	modifier = {
+		planet_chemists_produces_mult = 0.25
+		planet_translucers_produces_mult = 0.25
+		planet_refiners_produces_mult = 0.25
+		planet_miners_volatile_motes_produces_mult = 1.0
+		planet_miners_exotic_gases_produces_mult = 1.0
+		planet_miners_rare_crystals_produces_mult = 1.0
+	}	
+	
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}			
+		}
+	}
+	
+	ai_weight = {
+		factor = 5 #important resource
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}
+		}
+	}
+}
+
+tech_extract_and_refine_4 = {
+	cost = @tier2cost1
+	area = engineering
+	tier = 2
+	category = { materials }	
+	prerequisites = { "tech_extract_and_refine_3" }
+	weight = @tier2weight1
+	
+	modifier = {
+		planet_chemists_produces_mult = 0.25
+		planet_translucers_produces_mult = 0.25
+		planet_refiners_produces_mult = 0.25
+		planet_miners_volatile_motes_produces_mult = 1.0
+		planet_miners_exotic_gases_produces_mult = 1.0
+		planet_miners_rare_crystals_produces_mult = 1.0
+	}	
+	
+	weight_modifier = {
+		factor = 2
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}			
+		}
+	}
+	
+	ai_weight = {
+		factor = 5 #important resource
+		modifier = {
+			factor = 1.25
+			research_leader = {
+				area = engineering
+				has_trait = "leader_trait_expertise_materials"
+			}
+		}
+	}
+}

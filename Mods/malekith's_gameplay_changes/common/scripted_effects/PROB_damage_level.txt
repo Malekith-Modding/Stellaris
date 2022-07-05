@@ -1,0 +1,399 @@
+
+@default_eco_damage_recovery_counter = 6
+@default_overheat_recovery_counter = 3
+
+prob_increase_eco_damage_level_max_1 = {
+	if = {
+		limit = { prob_should_apply_eco_damage = yes }
+
+		change_variable = {
+			which = prob_eco_damage_level
+			value = 1
+		}
+
+		if = {
+			limit = {
+				check_variable = {
+					which = prob_eco_damage_level
+					value > 1
+				}
+			}
+			set_variable = {
+				which = prob_eco_damage_level
+				value = 1
+			}
+		}
+
+		set_variable = {
+			which = prob_eco_damage_recovery_counter
+			value = @default_eco_damage_recovery_counter
+		}
+	}
+}
+
+prob_increase_eco_damage_level_max_2 = {
+	if = {
+		limit = { prob_should_apply_eco_damage = yes }
+
+		change_variable = {
+			which = prob_eco_damage_level
+			value = 1
+		}
+
+		if = {
+			limit = {
+				check_variable = {
+					which = prob_eco_damage_level
+					value > 2
+				}
+			}
+			set_variable = {
+				which = prob_eco_damage_level
+				value = 2
+			}
+		}
+
+		set_variable = {
+			which = prob_eco_damage_recovery_counter
+			value = @default_eco_damage_recovery_counter
+		}
+	}
+}
+
+prob_increase_eco_damage_level_max_3 = {
+	if = {
+		limit = { prob_should_apply_eco_damage = yes }
+
+		change_variable = {
+			which = prob_eco_damage_level
+			value = 1
+		}
+
+		if = {
+			limit = {
+				check_variable = {
+					which = prob_eco_damage_level
+					value > 3
+				}
+			}
+			set_variable = {
+				which = prob_eco_damage_level
+				value = 3
+			}
+		}
+
+		set_variable = {
+			which = prob_eco_damage_recovery_counter
+			value = @default_eco_damage_recovery_counter
+		}
+	}
+}
+
+prob_increase_eco_damage_level_max_4 = {
+	if = {
+		limit = { prob_should_apply_eco_damage = yes }
+
+		change_variable = {
+			which = prob_eco_damage_level
+			value = 1
+		}
+
+		if = {
+			limit = {
+				check_variable = {
+					which = prob_eco_damage_level
+					value > 4
+				}
+			}
+			set_variable = {
+				which = prob_eco_damage_level
+				value = 4
+			}
+		}
+
+		set_variable = {
+			which = prob_eco_damage_recovery_counter
+			value = @default_eco_damage_recovery_counter
+		}
+	}
+}
+
+prob_increase_eco_damage_level_max_5 = {
+	if = {
+		limit = { prob_should_apply_eco_damage = yes }
+
+		change_variable = {
+			which = prob_eco_damage_level
+			value = 1
+		}
+
+		if = {
+			limit = {
+				check_variable = {
+					which = prob_eco_damage_level
+					value > 5
+				}
+			}
+			set_variable = {
+				which = prob_eco_damage_level
+				value = 5
+			}
+		}
+
+		set_variable = {
+			which = prob_eco_damage_recovery_counter
+			value = @default_eco_damage_recovery_counter
+		}
+	}
+}
+
+prob_decrease_eco_damage_level = {
+	change_variable = {
+		which = prob_eco_damage_level
+		value = -1
+	}
+
+	if = {
+		limit = {
+			check_variable = {
+				which = prob_eco_damage_level
+				value < 0
+			}
+		}
+		set_variable = {
+			which = prob_eco_damage_level
+			value = 0
+		}
+	}
+
+	if = {
+		limit = {
+			check_variable = {
+				which = prob_eco_damage_level
+				value > 0
+			}
+		}
+		set_variable = {
+			which = prob_eco_damage_recovery_counter
+			value = @default_eco_damage_recovery_counter
+		}
+	}
+}
+
+prob_increase_overheat_level_max_1 = {
+	change_variable = {
+		which = prob_overheat_level
+		value = 1
+	}
+
+	if = {
+		limit = {
+			check_variable = {
+				which = prob_overheat_level
+				value > 1
+			}
+		}
+		set_variable = {
+			which = prob_overheat_level
+			value = 1
+		}
+	}
+
+	set_variable = {
+		which = prob_overheat_recovery_counter
+		value = @default_overheat_recovery_counter
+	}
+}
+
+prob_increase_overheat_level_max_2 = {
+	change_variable = {
+		which = prob_overheat_level
+		value = 1
+	}
+
+	if = {
+		limit = {
+			check_variable = {
+				which = prob_overheat_level
+				value > 2
+			}
+		}
+		set_variable = {
+			which = prob_overheat_level
+			value = 2
+		}
+	}
+
+	set_variable = {
+		which = prob_overheat_recovery_counter
+		value = @default_overheat_recovery_counter
+	}
+}
+
+prob_increase_overheat_level_max_3 = {
+	change_variable = {
+		which = prob_overheat_level
+		value = 1
+	}
+
+	if = {
+		limit = {
+			check_variable = {
+				which = prob_overheat_level
+				value > 3
+			}
+		}
+		set_variable = {
+			which = prob_overheat_level
+			value = 3
+		}
+	}
+
+	set_variable = {
+		which = prob_overheat_recovery_counter
+		value = @default_overheat_recovery_counter
+	}
+}
+
+prob_increase_overheat_level_max_4 = {
+	change_variable = {
+		which = prob_overheat_level
+		value = 1
+	}
+
+	if = {
+		limit = {
+			check_variable = {
+				which = prob_overheat_level
+				value > 4
+			}
+		}
+		set_variable = {
+			which = prob_overheat_level
+			value = 4
+		}
+	}
+
+	set_variable = {
+		which = prob_overheat_recovery_counter
+		value = @default_overheat_recovery_counter
+	}
+}
+
+prob_increase_overheat_level_max_5 = {
+	change_variable = {
+		which = prob_overheat_level
+		value = 1
+	}
+
+	if = {
+		limit = {
+			check_variable = {
+				which = prob_overheat_level
+				value > 5
+			}
+		}
+		set_variable = {
+			which = prob_overheat_level
+			value = 5
+		}
+	}
+
+	set_variable = {
+		which = prob_overheat_recovery_counter
+		value = @default_overheat_recovery_counter
+	}
+}
+
+prob_decrease_overheat_level = {
+	change_variable = {
+		which = prob_overheat_level
+		value = -1
+	}
+
+	if = {
+		limit = {
+			check_variable = {
+				which = prob_overheat_level
+				value < 0
+			}
+		}
+		set_variable = {
+			which = prob_overheat_level
+			value = 0
+		}
+	}
+
+	if = {
+		limit = {
+			check_variable = {
+				which = prob_overheat_level
+				value > 0
+			}
+		}
+		set_variable = {
+			which = prob_overheat_recovery_counter
+			value = @default_overheat_recovery_counter
+		}
+	}
+
+	prob_refresh_planetary_damage_status = yes
+}
+
+prob_planetary_damage_monthly_recovery = {
+	if = {
+		limit = {
+			check_variable = {
+				which = prob_eco_damage_recovery_counter
+				value > 0
+			}
+		}
+		change_variable = {
+			which = prob_eco_damage_recovery_counter
+			value = -1
+		}
+	}
+
+	if = {
+		limit = {
+			check_variable = {
+				which = prob_eco_damage_recovery_counter
+				value = 0
+			}
+			check_variable = {
+				which = prob_eco_damage_level
+				value > 0
+			}
+		}
+		prob_decrease_eco_damage_level = yes
+	}
+
+	if = {
+		limit = {
+			check_variable = {
+				which = prob_overheat_recovery_counter
+				value > 0
+			}
+		}
+		change_variable = {
+			which = prob_overheat_recovery_counter
+			value = -1
+		}
+	}
+
+	if = {
+		limit = {
+			check_variable = {
+				which = prob_overheat_recovery_counter
+				value = 0
+			}
+			check_variable = {
+				which = prob_overheat_level
+				value > 0
+			}
+		}
+		prob_decrease_overheat_level = yes
+	}
+
+	prob_refresh_planetary_damage_status = yes
+}

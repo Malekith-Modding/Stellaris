@@ -1,0 +1,332 @@
+
+prob_increase_planetary_damage = {
+	if = {
+		limit = { prob_planet_takes_damage_step_5 = yes }
+		prob_increase_eco_damage_level_max_5 = yes
+		if = {
+			limit = { has_orbital_bombardment_stance = armageddon }
+			prob_increase_overheat_level_max_5 = yes
+		}
+	}
+	else_if = {
+		limit = { prob_planet_takes_damage_step_4 = yes }
+		prob_increase_eco_damage_level_max_4 = yes
+		if = {
+			limit = { has_orbital_bombardment_stance = armageddon }
+			prob_increase_overheat_level_max_4 = yes
+		}
+	}
+	else_if = {
+		limit = { prob_planet_takes_damage_step_3 = yes }
+		prob_increase_eco_damage_level_max_3 = yes
+		if = {
+			limit = { has_orbital_bombardment_stance = armageddon }
+			prob_increase_overheat_level_max_3 = yes
+		}
+	}
+	else_if = {
+		limit = { prob_planet_takes_damage_step_2 = yes }
+		prob_increase_eco_damage_level_max_2 = yes
+		if = {
+			limit = { has_orbital_bombardment_stance = armageddon }
+			prob_increase_overheat_level_max_2 = yes
+		}
+	}
+	else_if = {
+		limit = { prob_planet_takes_damage_step_1 = yes }
+		prob_increase_eco_damage_level_max_1 = yes
+		if = {
+			limit = { has_orbital_bombardment_stance = armageddon }
+			prob_increase_overheat_level_max_1 = yes
+		}
+	}
+	
+	prob_refresh_planetary_damage_status = yes
+}
+
+@prob_max_blockers_indiscriminate_1 = 1
+@prob_max_blockers_indiscriminate_2 = 2
+@prob_max_blockers_indiscriminate_3 = 3
+@prob_max_blockers_indiscriminate_4 = 4
+@prob_max_blockers_indiscriminate_5 = 5
+@prob_max_blockers_armageddon_1 = 2
+@prob_max_blockers_armageddon_2 = 4
+@prob_max_blockers_armageddon_3 = 6
+@prob_max_blockers_armageddon_4 = 8
+@prob_max_blockers_armageddon_5 = 10
+prob_add_tile_blocker = {
+	switch = {
+		trigger = has_orbital_bombardment_stance
+		indiscriminate = {
+			if = {
+				limit = { prob_planet_takes_damage_step_5 = yes }
+				change_variable = { which = prob_d_bombarded_land_max  value = @prob_max_blockers_indiscriminate_5 }
+			}
+			else_if = {
+				limit = { prob_planet_takes_damage_step_4 = yes }
+				change_variable = { which = prob_d_bombarded_land_max  value = @prob_max_blockers_indiscriminate_4 }
+			}
+			else_if = {
+				limit = { prob_planet_takes_damage_step_3 = yes }
+				change_variable = { which = prob_d_bombarded_land_max  value = @prob_max_blockers_indiscriminate_3 }
+			}
+			else_if = {
+				limit = { prob_planet_takes_damage_step_2 = yes }
+				change_variable = { which = prob_d_bombarded_land_max  value = @prob_max_blockers_indiscriminate_2 }
+			}
+			else_if = {
+				limit = { prob_planet_takes_damage_step_1 = yes }
+				change_variable = { which = prob_d_bombarded_land_max  value = @prob_max_blockers_indiscriminate_1 }
+			}
+		}
+		armageddon = {
+			if = {
+				limit = { prob_planet_takes_damage_step_5 = yes }
+				change_variable = { which = prob_d_bombarded_land_max  value = @prob_max_blockers_armageddon_5 }
+			}
+			else_if = {
+				limit = { prob_planet_takes_damage_step_4 = yes }
+				change_variable = { which = prob_d_bombarded_land_max  value = @prob_max_blockers_armageddon_4 }
+			}
+			else_if = {
+				limit = { prob_planet_takes_damage_step_3 = yes }
+				change_variable = { which = prob_d_bombarded_land_max  value = @prob_max_blockers_armageddon_3 }
+			}
+			else_if = {
+				limit = { prob_planet_takes_damage_step_2 = yes }
+				change_variable = { which = prob_d_bombarded_land_max  value = @prob_max_blockers_armageddon_2 }
+			}
+			else_if = {
+				limit = { prob_planet_takes_damage_step_1 = yes }
+				change_variable = { which = prob_d_bombarded_land_max  value = @prob_max_blockers_armageddon_1 }
+			}
+		}
+	}
+	every_deposit = {
+		limit = { is_deposit_type = prob_d_bombarded_land }
+		change_variable = {
+			which = prob_d_bombarded_land_max
+			value = -1
+		}
+	}
+	if = {
+		limit = {
+			check_variable = {
+				which = prob_d_bombarded_land_max
+				value > 0
+			}
+		}
+		add_deposit = prob_d_bombarded_land
+	}
+	
+	set_variable = {
+		which = prob_d_bombarded_land_max
+		value = 0
+	}
+	
+	prob_remove_excees_districts = yes
+}
+
+prob_remove_excees_districts = {
+	if = {
+		limit = { can_have_habitable_deposits = no }
+		while = {
+			limit = {
+				num_free_districts = { type = district_generator value < -1 }
+			}
+			remove_district = district_generator
+		}
+		while = {
+			limit = {
+				num_free_districts = { type = district_mining value < -1 }
+			}
+			remove_district = district_mining
+		}
+		while = {
+			limit = {
+				num_free_districts = { type = district_farming value < -1 }
+			}
+			remove_district = district_farming
+		}
+	}
+	while = {
+		limit = { free_district_slots < -1 }
+		remove_last_built_district = yes
+	}
+}
+
+prob_refresh_planetary_damage_status = {
+	# apply damage effect
+	if = {
+		limit = { prob_should_glass_planet = yes }
+		prob_glass_planet = yes
+		set_timed_planet_flag = {
+			flag = prob_glassed
+			days = 10
+		}
+	}
+	else_if = {
+		limit = { prob_should_nuke_planet = yes }
+		prob_nuke_planet = yes
+	}
+	else_if = {
+		limit = { prob_should_desertize_planet = yes }
+		prob_desertize_planet = yes
+	}
+	else_if = {
+		limit = { prob_should_downgrade_gaia = yes }
+		prob_downgrade_gaia = yes
+	}
+	# refresh modifiers
+	remove_modifier = prob_eco_damage_level_1
+	remove_modifier = prob_eco_damage_level_2
+	remove_modifier = prob_eco_damage_level_3
+	remove_modifier = prob_eco_damage_level_4
+	remove_modifier = prob_eco_damage_level_5
+	if = {
+		limit = { check_variable = { which = prob_eco_damage_level  value = 1 } }
+		add_modifier = { modifier = prob_eco_damage_level_1  days = -1 }
+	}
+	if = {
+		limit = { check_variable = { which = prob_eco_damage_level  value = 2 } }
+		add_modifier = { modifier = prob_eco_damage_level_2  days = -1 }
+	}
+	if = {
+		limit = { check_variable = { which = prob_eco_damage_level  value = 3 } }
+		add_modifier = { modifier = prob_eco_damage_level_3  days = -1 }
+	}
+	if = {
+		limit = { check_variable = { which = prob_eco_damage_level  value = 4 } }
+		add_modifier = { modifier = prob_eco_damage_level_4  days = -1 }
+	}
+	if = {
+		limit = { check_variable = { which = prob_eco_damage_level  value = 5 } }
+		add_modifier = { modifier = prob_eco_damage_level_5  days = -1 }
+	}
+	remove_modifier = prob_overheat_level_1
+	remove_modifier = prob_overheat_level_2
+	remove_modifier = prob_overheat_level_3
+	remove_modifier = prob_overheat_level_4
+	remove_modifier = prob_overheat_level_5
+	if = {
+		limit = { check_variable = { which = prob_overheat_level  value = 1 } }
+		add_modifier = { modifier = prob_overheat_level_1  days = -1 }
+	}
+	if = {
+		limit = { check_variable = { which = prob_overheat_level  value = 2 } }
+		add_modifier = { modifier = prob_overheat_level_2  days = -1 }
+	}
+	if = {
+		limit = { check_variable = { which = prob_overheat_level  value = 3 } }
+		add_modifier = { modifier = prob_overheat_level_3  days = -1 }
+	}
+	if = {
+		limit = { check_variable = { which = prob_overheat_level  value = 4 } }
+		add_modifier = { modifier = prob_overheat_level_4  days = -1 }
+	}
+	if = {
+		limit = { check_variable = { which = prob_overheat_level  value = 5 } }
+		add_modifier = { modifier = prob_overheat_level_5  days = -1 }
+	}
+}
+
+prob_pre_pseudo_terraforming = {
+	remove_modifier = natural_beauty
+	remove_modifier = atmospheric_aphrodisiac
+	remove_modifier = atmospheric_hallucinogen
+	remove_modifier = lush_planet
+	remove_modifier = dangerous_wildlife
+	every_deposit = {
+		limit = { is_deposit_type = prob_d_bombarded_land }
+		remove_deposit = yes
+		change_variable = {
+			which = prob_d_bombarded_land_counter
+			value = 1
+		}
+	}
+}
+
+prob_post_pseudo_terraforming = {
+	reroll_deposits = yes
+	while = {
+		limit = {
+			check_variable = {
+				which = prob_d_bombarded_land_counter
+				value > 0
+			}
+		}
+		change_variable = {
+			which = prob_d_bombarded_land_counter
+			value = -1
+		}
+		add_deposit = prob_d_bombarded_land
+	}
+	prob_remove_excees_districts = yes
+}
+
+prob_glass_planet = {
+	destroy_colony = yes
+	set_variable = { which = prob_eco_damage_level  value = 0 }
+	set_variable = { which = prob_eco_damage_recovery_counter  value = 0 }
+	set_variable = { which = prob_overheat_level  value = 0 }
+	set_variable = { which = prob_overheat_recovery_counter  value = 0 }
+	if = {
+		limit = { is_ringworld = yes }
+		set_planet_flag = prob_ringworld_destroyed
+		spawn_ringworld_cracker_effect = yes
+		change_pc = pc_ringworld_habitable_damaged
+		reset_planet = yes
+		clear_deposits = yes
+		clear_planet_modifiers = yes
+		remove_all_districts = yes
+		remove_all_buildings = yes
+		close_branch_office = yes
+		add_planet_devastation = -1000
+	}
+	else_if = {
+		limit = { has_planet_flag = megastructure }
+		set_planet_flag = prob_habitat_destroyed
+		# remove plane later
+	}
+	else = {
+		change_pc = pc_molten
+		reset_planet = yes
+		clear_deposits = yes
+		clear_planet_modifiers = yes
+		remove_all_districts = yes
+		remove_all_buildings = yes
+		close_branch_office = yes
+		add_planet_devastation = -1000
+		set_planet_flag = prob_glassed_planet
+		add_modifier = { modifier = prob_glassed_planet  days = 360 }
+		planet_event = { id = prob.5  days = 360 }
+	}
+}
+
+prob_nuke_planet = {
+	prob_pre_pseudo_terraforming = yes
+	change_pc = pc_nuked
+	prob_post_pseudo_terraforming = yes
+}
+
+prob_desertize_planet = {
+	prob_pre_pseudo_terraforming = yes
+	change_pc = pc_desert
+	prob_post_pseudo_terraforming = yes
+}
+
+prob_downgrade_gaia = {
+	prob_pre_pseudo_terraforming = yes
+	random_list = {
+		2 = { change_pc = pc_tropical }
+		3 = { change_pc = pc_continental }
+		3 = { change_pc = pc_ocean }
+		7 = { change_pc = pc_desert }
+		7 = { change_pc = pc_arid }
+		7 = { change_pc = pc_savannah }
+		7 = { change_pc = pc_tundra }
+		7 = { change_pc = pc_arctic }
+		7 = { change_pc = pc_alpine }
+	}
+	prob_post_pseudo_terraforming = yes
+}

@@ -1,0 +1,82 @@
+
+prob_glassed_planet = {
+	icon = "gfx/interface/icons/planet_modifiers/pm_unstable_tectonics.dds"
+	icon_frame = 3
+
+	important = yes
+}
+
+prob_eco_damage_level_1 = {
+	icon = "gfx/prob/eco_damage_levels/1.dds"
+	icon_frame = 3
+
+	biological_pop_happiness = -0.1
+}
+
+prob_eco_damage_level_2 = {
+	icon = "gfx/prob/eco_damage_levels/2.dds"
+	icon_frame = 3
+
+	biological_pop_happiness = -0.2
+}
+
+prob_eco_damage_level_3 = {
+	icon = "gfx/prob/eco_damage_levels/3.dds"
+	icon_frame = 3
+
+	biological_pop_happiness = -0.3
+}
+
+prob_eco_damage_level_4 = {
+	icon = "gfx/prob/eco_damage_levels/4.dds"
+	icon_frame = 3
+
+	biological_pop_happiness = -0.4
+}
+
+prob_eco_damage_level_5 = {
+	icon = "gfx/prob/eco_damage_levels/5.dds"
+	icon_frame = 3
+
+	biological_pop_happiness = -0.5
+}
+
+prob_overheat_level_1 = {
+	icon = "gfx/prob/overheat_levels/1.dds"
+	icon_frame = 3
+
+	biological_pop_happiness = -0.1
+	planet_jobs_produces_mult = -0.15
+}
+
+prob_overheat_level_2 = {
+	icon = "gfx/prob/overheat_levels/2.dds"
+	icon_frame = 3
+
+	biological_pop_happiness = -0.2
+	planet_jobs_produces_mult = -0.3
+}
+
+prob_overheat_level_3 = {
+	icon = "gfx/prob/overheat_levels/3.dds"
+	icon_frame = 3
+
+	biological_pop_happiness = -0.3
+	planet_jobs_produces_mult = -0.45
+}
+
+prob_overheat_level_4 = {
+	icon = "gfx/prob/overheat_levels/4.dds"
+	icon_frame = 3
+
+	biological_pop_happiness = -0.4
+	planet_jobs_produces_mult = -0.6
+}
+
+prob_overheat_level_5 = {
+	icon = "gfx/prob/overheat_levels/5.dds"
+	icon_frame = 3
+
+	biological_pop_happiness = -0.5
+	planet_jobs_produces_mult = -0.75
+}

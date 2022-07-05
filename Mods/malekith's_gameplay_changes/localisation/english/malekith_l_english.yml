@@ -1,0 +1,6 @@
+﻿l_english:
+
+ war_goal_prob_total_war:0 "Total War"
+ war_goal_prob_total_war_desc:2 "A Total War is waged with our Rivals to seize their territories."
+ casus_belli_prob_rivalry:0 "Rivalry"
+ casus_belli_prob_rivalry_acquire_hint:0 ":0 "Total war with our rivals"

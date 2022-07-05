@@ -1,0 +1,98 @@
+
+prob_should_apply_eco_damage = {
+	NOR = {
+		#is_planet_class = pc_ringworld_habitable
+		#has_planet_flag = megastructure
+		is_planet_class = pc_machine
+		is_planet_class = pc_city
+		is_planet_class = pc_hive
+	}
+}
+
+prob_should_glass_planet = {
+	check_variable = {
+		which = prob_overheat_level
+		value > 4
+	}
+}
+
+prob_should_nuke_planet = {
+	NOR = {
+		is_planet_class = pc_ringworld_habitable
+		has_planet_flag = megastructure
+		is_planet_class = pc_machine
+		is_planet_class = pc_city
+		is_planet_class = pc_hive
+		is_planet_class = pc_nuked
+	}
+	check_variable = {
+		which = prob_eco_damage_level
+		value > 4
+	}
+}
+
+prob_should_desertize_planet = {
+	NOR = {
+		is_planet_class = pc_ringworld_habitable
+		has_planet_flag = megastructure
+		is_planet_class = pc_machine
+		is_planet_class = pc_city
+		is_planet_class = pc_hive
+		is_planet_class = pc_nuked
+		is_planet_class = pc_desert
+	}
+	check_variable = {
+		which = prob_overheat_level
+		value > 2
+	}
+}
+
+prob_should_downgrade_gaia = {
+	is_planet_class = pc_gaia
+	OR = {
+		check_variable = {
+			which = prob_eco_damage_level
+			value > 1
+		}
+		check_variable = {
+			which = prob_overheat_level
+			value > 0
+		}
+	}
+}
+
+@damage_step_1 = 25
+@damage_step_2 = 40
+@damage_step_3 = 55
+@damage_step_4 = 70
+@damage_step_5 = 85
+@num_armies_to_prevent_step_1 = 32
+@num_armies_to_prevent_step_2 = 16
+@num_armies_to_prevent_step_3 = 8
+@num_armies_to_prevent_step_4 = 4
+@num_armies_to_prevent_step_5 = 2
+
+prob_planet_takes_damage_step_1 = {
+	planet_devastation >= @damage_step_1
+	count_armies = { count < @num_armies_to_prevent_step_1 }
+}
+
+prob_planet_takes_damage_step_2 = {
+	planet_devastation >= @damage_step_2
+	count_armies = { count < @num_armies_to_prevent_step_2 }
+}
+
+prob_planet_takes_damage_step_3 = {
+	planet_devastation >= @damage_step_3
+	count_armies = { count < @num_armies_to_prevent_step_3 }
+}
+
+prob_planet_takes_damage_step_4 = {
+	planet_devastation >= @damage_step_4
+	count_armies = { count < @num_armies_to_prevent_step_4 }
+}
+
+prob_planet_takes_damage_step_5 = {
+	planet_devastation >= @damage_step_5
+	count_armies = { count < @num_armies_to_prevent_step_5 }
+}

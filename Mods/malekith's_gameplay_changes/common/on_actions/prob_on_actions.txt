@@ -1,0 +1,36 @@
+
+# Planet has reached 0 health from orbital bombardment
+# This = Planet
+# From = Bombarder
+on_planet_bombarded = {
+	events = {
+		prob.1	# capture planet (selective)
+		prob.2	# increase eco-damage level and/or overheat level (indiscriminate & armageddon)
+	}
+}
+
+# Planet has reached 0 pops from orbital bombardment
+# This = Planet
+# From = Bombarder
+on_planet_zero_pops = {
+	events = {
+		prob.3	# planet destroyed report
+	}
+}
+
+# No scope, like on_game_start
+on_monthly_pulse = {
+	events = {
+		prob.4	# eco-damage and overheat recovery
+		#prob.12	# additional monthly bombardment effects
+	}
+}
+
+# A war has ended
+# Root = Loser
+# From = Main Winner
+#on_war_ended = {
+#	events = {
+#		prob.10	# add pseudo truce
+#	}
+#}
